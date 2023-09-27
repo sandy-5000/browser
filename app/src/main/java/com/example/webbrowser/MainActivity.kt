@@ -5,10 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
@@ -18,6 +16,7 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.example.webbrowser.screens.Home
 import com.example.webbrowser.screens.Login
+import com.example.webbrowser.screens.Register
 import com.example.webbrowser.ui.theme.WebBrowserTheme
 import com.example.webbrowser.util.DataViewModel
 
@@ -40,6 +39,7 @@ class MainActivity : ComponentActivity() {
                             Login(nav = nav, viewModel = sharedViewModel)
                         }
                         composable("register") {
+                            Register(nav = nav, viewModel = sharedViewModel)
                         }
                         composable("forgot_passwd") {
                         }

@@ -7,7 +7,9 @@ import androidx.lifecycle.ViewModel
 data class BrowserUiState(
     var name: String = "",
     var count: Int = 0,
-    var email: String = "",
+    var username: String = "sandyblaze",
+    var password: String = "",
+    val defaultPassword: String = "sandyblaze",
 )
 
 class DataViewModel: ViewModel() {

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,7 +22,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.webbrowser.ui.theme.WebBrowserTheme
-import com.example.webbrowser.util.BrowserUiState
 import com.example.webbrowser.util.DataViewModel
 
 @Composable()
@@ -33,9 +33,7 @@ fun Home(
 
     val uiState by remember { mutableStateOf(viewModel.uiState.value) }
 
-    val name = uiState?.name
     val count = uiState?.count
-    val email = uiState?.email
 
     Box(
         modifier = modifier,
@@ -61,9 +59,15 @@ fun Home(
                         popUpTo("home")
                     }
                 },
+                colors = ButtonDefaults.outlinedButtonColors(
+                    containerColor = Color(0xFF6A9197),
+                    contentColor = Color.White,
+                    disabledContainerColor = Color(0x996A9197),
+                    disabledContentColor = Color.White,
+                ),
             ) {
                 Text(
-                    text = "Goto Login",
+                    text = "Login",
                 )
             }
         }
