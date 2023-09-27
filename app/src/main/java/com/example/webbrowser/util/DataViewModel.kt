@@ -1,37 +1,20 @@
 package com.example.webbrowser.util
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
 data class BrowserUiState(
-    val name: String = "",
-    val count: Int = 0,
-    val email: String = "",
+    var name: String = "",
+    var count: Int = 0,
+    var email: String = "",
 )
 
 class DataViewModel: ViewModel() {
-    private val _uiState = MutableStateFlow(BrowserUiState())
-    val uiState: StateFlow<BrowserUiState> = _uiState.asStateFlow()
-
-    init {
-        reset()
-    }
-
-    private fun reset() {
-        _uiState.value = BrowserUiState(
-            name = "Sandy Blaze",
-            count = 0,
-            email = "sandyblaze911@gmail.com"
-        )
-    }
+    private val _uiState = MutableLiveData(BrowserUiState())
+    val uiState: LiveData<BrowserUiState> = _uiState
 
     fun incrementCount() {
-        val currentState = _uiState.value
-        val updatedCount = currentState.count + 1
-        val updatedUiState = currentState.copy(count = updatedCount)
-        _uiState.value = updatedUiState
+        _uiState.value?.count = _uiState.value?.count!! + 1
     }
-
 }
